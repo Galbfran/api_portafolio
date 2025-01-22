@@ -4,26 +4,29 @@ import { AppService } from './app.service';
 import { EmailModule } from './email/email.module';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { ConfigModule } from '@nestjs/config';
+import { PdfController } from './pdf/pdf.controller';
+import { PdfModule } from './pdf/pdf.module';
 
 
 @Module({
   imports: [
+    PdfModule,
     EmailModule,
-    ConfigModule.forRoot(), // Para manejar variables de entorno
+    ConfigModule.forRoot(),
     MailerModule.forRoot({
       transport: {
         service: 'gmail',
         auth: {
-          user: process.env.EMAIL_USER, // Definir en .env
-          pass: process.env.EMAIL_PASS, // Definir en .env
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASS,
         },
       },
       defaults: {
-        from: '"No Reply" <noreply@example.com>', // Remitente predeterminado
+        from: '"No Reply" <noreply@example.com>',
       },
     }),
   ],
-  controllers: [AppController],
+  controllers: [AppController, PdfController],
   providers: [AppService],
 })
 export class AppModule { }
