@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateEmailDto } from './dto/create-email.dto';
 import { UpdateEmailDto } from './dto/update-email.dto';
 import { MailerService } from '@nestjs-modules/mailer';
+import email from './helpers/email';
 
 
 @Injectable()
@@ -10,11 +11,11 @@ export class EmailService {
   async create(createEmailDto: CreateEmailDto) {
     try {
       await this.mailerService.sendMail({
+        to: "francogalbiati984@gmail.com",
         cc: createEmailDto.email,
-        to: process.env.EMAIL_USER,
         subject: createEmailDto.name,
         text: createEmailDto.description,
-        html: `<p>${createEmailDto.description}</p>`,
+        html: email({ createEmailDto }),
       });
       return { message: 'Email enviado correctamente' };
     } catch (error) {
