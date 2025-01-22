@@ -7,6 +7,5 @@ export class Email {
   @IsString()
   @MinLength(1)
   message: string;
-  @IsString()
-  description: string | null;
+  description: string;
 }
