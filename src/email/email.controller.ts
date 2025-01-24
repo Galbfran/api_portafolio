@@ -11,7 +11,7 @@ export class EmailController {
   create(@Body() createEmailDto: CreateEmailDto) {
     return this.emailService.create(createEmailDto);
   }
-  @Post(":subcription")
+  @Post("subcription")
   subcription(@Body() createEmailDto: CreateEmailDto) {
     return this.emailService.suscription(createEmailDto);
   }
