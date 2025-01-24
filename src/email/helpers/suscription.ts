@@ -1,69 +1,74 @@
 import { SuscriptionDto } from "../dto/subcription.dto";
 
 export default function suscriptionEmail(createEmailDto: SuscriptionDto): string {
-  return `<!DOCTYPE html>
+    return `<!DOCTYPE html>
                <html>
                <head>
                    <meta charset="UTF-8">
                    <title>Email Template</title>
                    <style>
-                       body {
-                           font-family: Arial, sans-serif;
-                           background-color: #FAE8B3;
-                           margin: 0;
-                           padding: 20px;
-                       }
-                       .container {
-                           max-width: 600px;
-                           background: #FFF;
-                           padding: 20px;
-                           border-radius: 10px;
-                           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                           text-align: center;
-                       }
-                       .header {
-                           background: linear-gradient(to right, #5A7F4E, #88B04B);
-                           color: white;
-                           padding: 15px;
-                           font-size: 22px;
-                           font-weight: bold;
-                           border-radius: 10px 10px 0 0;
-                       }
-                       .content {
-                           padding: 20px;
-                           font-size: 16px;
-                           color: #333;
-                       }
-                       .footer {
-                           text-align: center;
-                           padding: 10px;
-                           font-size: 12px;
-                           color: #666;
-                       }
-                       .badge {
-                           display: inline-block;
-                           background: #D4E157;
-                           padding: 10px 20px;
-                           margin: 5px;
-                           border-radius: 20px;
-                           font-size: 14px;
-                           font-weight: bold;
-                           color: #333;
-                       }
+                      body {
+                        font-family: 'Inter', sans-serif;
+                        background-color: #000000;
+                        }
+
+                        * {
+                        margin: 0;
+                        padding: 0;
+                        box-sizing: border-box;
+                        }
+
+                        .main {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100vw;
+                        height: 100vh;
+                        position: relative;
+
+                        }
+
+                        .container {
+                        padding: 70px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-around;
+                        align-items: center;
+                        max-width: 841px;
+                        max-height: 505px;
+                        height: 505px;
+                        width: 841px;
+                        background-color: #FFFFFF;
+                        border-radius: 50px;
+                        }   
+                        .button {
+                            width: 205px;
+                            height: 39px;
+                            background-color: #E6FC15;
+                            font-size: 15px;
+                            font-weight: 700;
+                            border: none;
+                            border-radius: 50px;
+                            cursor: pointer;
+                            }
+
+                            .button:hover {
+                            pointer-events: stroke;
+                            background-color: #f2fe7d;
+                            }
+
+                            .button:active {
+                            background-color: #c8db10;
+                            }
                    </style>
                </head>
                <body>
                    <div class="container">
-                       <div class="header">
+                       <div class="button">
                            ¡Hola, ${createEmailDto.email}!
                        </div>
-                       <div class="content">
-                           <p>${createEmailDto.email}</p>
-                         
-                       </div>
-                       <div class="footer">
-                           <p>Gracias por tu mensaje.</p>
-                       </div>
+                           <p>Gracias por tu suscripción</p>
                    </div>
                </body>
                </html>`;
