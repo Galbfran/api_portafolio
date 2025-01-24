@@ -10,13 +10,7 @@ export default function suscriptionEmail(createEmailDto: SuscriptionDto): string
                       body {
                         font-family: 'Inter', sans-serif;
                         background-color: #000000;
-                         display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        width: 100vw;
-                        height: 100vh;
-                        position: relative;
+                       
                         }
 
                         * {
@@ -30,8 +24,8 @@ export default function suscriptionEmail(createEmailDto: SuscriptionDto): string
                         flex-direction: column;
                         justify-content: center;
                         align-items: center;
-                        width: 100vw;
-                        height: 100vh;
+                        width: 1000px;
+                        height: 800px;
                         position: relative;
 
                         }
@@ -71,11 +65,13 @@ export default function suscriptionEmail(createEmailDto: SuscriptionDto): string
                    </style>
                </head>
                <body>
-                   <div class="container">
-                       <div class="button">
-                           ¡Hola, ${createEmailDto.email}!
-                       </div>
-                           <p>Gracias por tu suscripción</p>
+                   <div class="main">
+                    <div class="container">
+                        <div class="button">
+                            ¡Hola, ${createEmailDto.email}!
+                        </div>
+                            <p>Gracias por tu suscripción</p>
+                    </div>
                    </div>
                </body>
                </html>`;
