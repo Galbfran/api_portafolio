@@ -10,6 +10,13 @@ export default function suscriptionEmail(createEmailDto: SuscriptionDto): string
                       body {
                         font-family: 'Inter', sans-serif;
                         background-color: #000000;
+                         display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100vw;
+                        height: 100vh;
+                        position: relative;
                         }
 
                         * {
