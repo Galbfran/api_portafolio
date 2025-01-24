@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { EmailService } from './email.service';
 import { CreateEmailDto } from './dto/create-email.dto';
 import { UpdateEmailDto } from './dto/update-email.dto';
+import { SuscriptionDto } from './dto/subcription.dto';
 
 @Controller('email')
 export class EmailController {
@@ -12,8 +13,8 @@ export class EmailController {
     return this.emailService.create(createEmailDto);
   }
   @Post("subcription")
-  subcription(@Body() createEmailDto: CreateEmailDto) {
-    return this.emailService.suscription(createEmailDto);
+  subcription(@Body() subcriptionDto: SuscriptionDto) {
+    return this.emailService.suscription(subcriptionDto);
   }
 
   @Get()

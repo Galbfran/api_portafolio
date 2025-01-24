@@ -4,6 +4,7 @@ import { UpdateEmailDto } from './dto/update-email.dto';
 import { MailerService } from '@nestjs-modules/mailer';
 import email from './helpers/email';
 import { SuscriptionDto } from './dto/subcription.dto';
+import suscriptionEmail from './helpers/suscription';
 
 
 @Injectable()
@@ -23,14 +24,15 @@ export class EmailService {
       return { message: 'Error al enviar el email' };
     }
   }
-  async suscription(createEmailDto: SuscriptionDto) {
+  async suscription(subcriptionDto: SuscriptionDto) {
     try {
       await this.mailerService.sendMail({
         to: "francogalbiati984@gmail.com",
-        cc: createEmailDto.email,
+        cc: subcriptionDto.email,
         subject: "Guru Test",
         text: "Franco Galbiati Guru Test",
-        html: email({ createEmailDto }),
+        html: suscriptionEmail(subcriptionDto),
+
       });
       return { message: 'Email enviado correctamente' };
     } catch (error) {
