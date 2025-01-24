@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { EmailModule } from './email/email.module';
@@ -6,6 +6,7 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { ConfigModule } from '@nestjs/config';
 import { PdfController } from './pdf/pdf.controller';
 import { PdfModule } from './pdf/pdf.module';
+import { LoggerMiddleware } from './logger/logger.middleware';
 
 
 @Module({
@@ -29,4 +30,8 @@ import { PdfModule } from './pdf/pdf.module';
   controllers: [AppController, PdfController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggerMiddleware).forRoutes('*');
+  }
+}
