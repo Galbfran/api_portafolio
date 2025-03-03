@@ -4,10 +4,12 @@ import { Logger, ValidationPipe } from '@nestjs/common';
 import * as cors from 'cors';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  app.useLogger(new Logger(
+  const app = await NestFactory.create(AppModule, {
+    logger: ['log', 'error', 'warn', 'debug', 'verbose'],
+  });
 
-  ));
+
+
   app.setGlobalPrefix('api');
   app.use(cors({
     origin: '*',
@@ -22,8 +24,10 @@ async function bootstrap() {
   );
 
 
-  await app.listen(process.env.PORT ?? 3000, () => {
-    console.log(`Server is running on port ${process.env.PORT ?? 3000}`);
+  await app.listen(process.env.PORT ?? 3001, () => {
+    console.log(`Server is running on port ${process.env.PORT ?? 3001}`);
   });
+  const logger = new Logger('Payments-ms');
+  logger.log(`App running on port ${process.env.PORT ?? 3001}`);
 }
 bootstrap();

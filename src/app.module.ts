@@ -7,6 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import { PdfController } from './pdf/pdf.controller';
 import { PdfModule } from './pdf/pdf.module';
 import { LoggerMiddleware } from './logger/logger.middleware';
+import { UserModule } from './user/user.module';
 
 
 @Module({
@@ -26,6 +27,7 @@ import { LoggerMiddleware } from './logger/logger.middleware';
         from: '"No Reply" <noreply@example.com>',
       },
     }),
+    UserModule,
   ],
   controllers: [AppController, PdfController],
   providers: [AppService],
